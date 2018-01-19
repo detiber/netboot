@@ -5,7 +5,7 @@ os:
 - linux
 go:
 - 1.8
-- 1.9
+#- 1.9
 
 install:
 - go get github.com/golang/dep/cmd/dep
@@ -43,8 +43,8 @@ jobs:
 env:
   matrix:
     - MY_GOARCH=amd64
-    - MY_GOARCH=arm
-    - MY_GOARCH=arm64
+#    - MY_GOARCH=arm
+#    - MY_GOARCH=arm64
   global:
     - GOARM=7
     # Docker Hub trigger URL
