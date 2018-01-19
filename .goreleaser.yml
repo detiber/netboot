@@ -1,0 +1,4 @@
+# .goreleaser.yml
+# Build customization
+builds:
+  - binary: pixiecore

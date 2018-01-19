@@ -10,6 +10,7 @@ go:
 install:
 - go get github.com/golang/dep/cmd/dep
 - go get github.com/golang/lint/golint
+- go get github.com/goreleaser/goreleaser
 
 script:
 # It seems Travis, in an attempt to be helpful, nukes GOARCH=x if we
@@ -25,11 +26,6 @@ script:
 - "if [ \"$GOARCH\" = \"amd64\" ]; then go vet $(go list ./... | grep -v /vendor/); fi"
 - "if [ \"$GOARCH\" = \"amd64\" ]; then go list ./... | grep -v /vendor/ | xargs -n1 golint; fi"
 
-staqes:
-  - test
-  - name: deploy
-    if: env(DEPLOY) = true
-
 jobs:
   include:
     - stage: deploy
@@ -39,10 +35,11 @@ jobs:
       script: true
       deploy:
         - provider: script
-          script: go run scripts/trigger_docker_build/main.go
+          #script: go run scripts/trigger_docker_build/main.go
+          script: goreleaser
           on:
             branch: master
-            condition: -n $DEPLOY_DOCKERHUB
+            #  condition: -n $DEPLOY_DOCKERHUB
 env:
   matrix:
     - MY_GOARCH=amd64
