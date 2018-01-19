@@ -31,15 +31,13 @@ jobs:
     - stage: deploy
       go: 1.8
       env:
-        - NAME=docker_hub
-      script: true
+        - NAME=goreleaser
+#      script: true
       deploy:
         - provider: script
-          #script: go run scripts/trigger_docker_build/main.go
           script: goreleaser --snapshot
           on:
             branch: master
-            #  condition: -n $DEPLOY_DOCKERHUB
 env:
   matrix:
     - MY_GOARCH=amd64
