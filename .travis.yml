@@ -36,7 +36,7 @@ jobs:
       deploy:
         - provider: script
           #script: go run scripts/trigger_docker_build/main.go
-          script: goreleaser
+          script: goreleaser --snapshot
           on:
             branch: master
             #  condition: -n $DEPLOY_DOCKERHUB

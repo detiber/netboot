@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM arm64v8/alpine:3.6
 
 MAINTAINER David Anderson <dave@natulte.net>
 
