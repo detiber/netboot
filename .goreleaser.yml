@@ -2,3 +2,10 @@
 # Build customization
 builds:
   - binary: pixiecore
+    main: cmd/pixiecore/main.go
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm64
+      - arm
